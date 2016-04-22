@@ -1,7 +1,27 @@
-check program ossec_server with path "/var/vcap/packages/ossec/bin/ossec-control status" with timeout 1000 seconds
-  if status != 0 then restart
-  with pidfile /var/vcap/sys/run/ossec_server/ossec_server.pid
-  start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl start"
-  stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl stop"
-  group vcap
+check process ossec-analysisd matching ossec-analysisd
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
 
+check process ossec-execd matching ossec-execd
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
+
+check process ossec-logcollector matching ossec-logcollector
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
+
+check process ossec-maild matching ossec-maild
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
+
+check process ossec-monitord matching ossec-monitord
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
+
+check process ossec-remoted matching ossec-remoted
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
+
+check process ossec-syscheckd matching ossec-syscheckd
+	start program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control start"
+	stop program = "/var/vcap/packages/ossec/ossec-hids-2.8.3/bin/ossec-control stop"
