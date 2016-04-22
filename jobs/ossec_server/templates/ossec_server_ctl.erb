@@ -5,31 +5,25 @@ set -u # report the usage of uninitialized variables
 
 JOB_NAME=ossec_server
 JOB_DIR=/var/vcap/jobs/$JOB_NAME
-PACKAGE_DIR=/var/vcap/packages/$JOB_NAME
+PACKAGE_DIR=/var/vcap/packages/ossec
 STORE_DIR=/var/vcap/store/$JOB_NAME
 CONFIG=$JOB_DIR/config/$JOB_NAME.yml
 RUN_DIR=/var/vcap/sys/run/$JOB_NAME
 LOG_DIR=/var/vcap/sys/log/$JOB_NAME
-PIDFILE=$RUN_DIR/$JOB_NAME.pid
-
-source /var/vcap/packages/common/utils.sh
 
 case $1 in
 
   start)
-    pid_guard $PIDFILE $JOB_NAME
-
     mkdir -p $RUN_DIR
     mkdir -p $LOG_DIR
     mkdir -p $STORE_DIR
 
-    echo $$ > $PIDFILE
+    cp $JOB_DIR/etc/preloaded-vars.conf ${PACKAGE_DIR}/ossec-hids-2.8.3/etc/preloaded-vars.conf
 
-    cp $JOB_DIR/etc/preloaded-vars.conf $PACKAGE_DIR/etc/preloaded-vars.conf
+    cd ${PACKAGE_DIR}/ossec-hids-2.8.3
 
-    cd $PACKAGE_DIR/ossec
-
-    exec ./install.sh
+    export USER_DIR=/var/vcap/packages/ossec
+    ./install.sh
 
     exec bin/ossec-control start  \
          >>$LOG_DIR/$JOB_NAME.stdout.log \
@@ -38,7 +32,7 @@ case $1 in
 
 
   stop)
-    kill_and_wait $PIDFILE
+    exec ${PACKAGE_DIR}/ossec-hids-2.8.3/bin/ossec-control stop
 
     ;;
   *)

@@ -1,6 +1,7 @@
-check process ossec_server
+check program ossec_server with path "/var/vcap/packages/ossec/bin/ossec-control status" with timeout 1000 seconds
+  if status != 0 then restart
   with pidfile /var/vcap/sys/run/ossec_server/ossec_server.pid
-  start program "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl start"
-  stop program "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl stop"
+  start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl start"
+  stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl stop"
   group vcap
 

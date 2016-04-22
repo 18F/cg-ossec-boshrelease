@@ -23,6 +23,8 @@ USER_LANGUAGE="<%= p("ossec_server.language") %>"
 # messages are not going to be asked.
 USER_NO_STOP="true"
 
+USER_DIR="/var/vcap/packages/ossec/ossec-hids-2.8.3"
+USER_DELETE_DIR="n"
 
 # USER_INSTALL_TYPE defines the installation type to
 # be used during install. It can only be "local",
@@ -49,11 +51,11 @@ USER_ENABLE_ROOTCHECK="<%= p("ossec_server.enable_rootcheck") %>"
 
 # If USER_UPDATE is set to anything, the update
 # installation will be done.
-#USER_UPDATE="y"
+USER_UPDATE="y"
 
 # If USER_UPDATE_RULES is set to anything, the
 # rules will also be updated.
-#USER_UPDATE_RULES="y"
+USER_UPDATE_RULES="y"
 
 # If USER_BINARYINSTALL is set, the installation
 # is not going to compile the code, but use the

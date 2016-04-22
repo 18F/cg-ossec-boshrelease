@@ -1,0 +1,16 @@
+---
+packages:
+- name: ossec
+  version: 07261427ab85a3e7fa41119433f662e5d4e982d4
+  fingerprint: 07261427ab85a3e7fa41119433f662e5d4e982d4
+  sha1: 2323c51bd1259f2a2bd16b8e76c81f5416bde1b5
+  dependencies: []
+jobs:
+- name: ossec_server
+  version: c64da0cbab6ad8df6e04be4b2f665ebd8fd2afe7
+  fingerprint: c64da0cbab6ad8df6e04be4b2f665ebd8fd2afe7
+  sha1: e32ff32a1b7fde92169506a29625813bed270ffa
+commit_hash: 1cad9864
+uncommitted_changes: true
+name: ossec
+version: '21'
