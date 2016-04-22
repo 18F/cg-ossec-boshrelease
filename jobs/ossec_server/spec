@@ -3,6 +3,7 @@ name: ossec_server
 templates:
   preloaded-vars.conf.erb: etc/preloaded-vars.conf
   ossec-server.conf.erb: etc/ossec-server.conf
+  ossec_server_ctl.erb: bin/ossec_server_ctl
 
 packages:
 - ossec

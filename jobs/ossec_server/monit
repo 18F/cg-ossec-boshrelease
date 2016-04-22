@@ -1,0 +1,6 @@
+check process ossec_server
+  with pidfile /var/vcap/sys/run/ossec_server/ossec_server.pid
+  start program "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl start"
+  stop program "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl stop"
+  group vcap
+
