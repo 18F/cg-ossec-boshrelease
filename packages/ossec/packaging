@@ -1,0 +1,16 @@
+# abort script on any command that exits with a non zero value
+exec 2>&1
+set -e
+set -u
+
+export OSSEC_VERSION="ossec-hids-2.8.3"
+
+tar -zxvf ${OSSEC_VERSION}.tar.gz
+pushd ${OSSEC_VERSION}/src
+echo "DIR=${BOSH_INSTALL_TARGET}" > LOCATION
+make setagent
+make all
+make build
+popd
+
+rsync ${OSSEC_VERSION} ${BOSH_INSTALL_TARGET}
