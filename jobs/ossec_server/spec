@@ -9,9 +9,6 @@ packages:
 - ossec
 
 properties:
-  admin_ui.uaadb.username:
-    description: "UAA db username"
-    default: postgres
   ossec_server.language:
     description: "Server language"
     default: en
