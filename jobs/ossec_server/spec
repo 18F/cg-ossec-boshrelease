@@ -1,0 +1,44 @@
+---
+name: ossec_server
+templates:
+  preloaded-vars.conf.erb: etc/preloaded-vars.conf
+  ossec-server.conf.erb: etc/ossec-server.conf
+
+packages:
+- ossec
+
+properties:
+  admin_ui.uaadb.username:
+    description: "UAA db username"
+    default: postgres
+  ossec_server.language:
+    description: "Server language"
+    default: en
+  ossec_server.enable_active_response:
+    description: "Enable active responses"
+    default: n
+  ossec_server.enable_syscheck:
+    description: "Enable syscheck"
+    default: y
+  ossec_server.enable_rootcheck:
+    description: "Enable root checking"
+    default: y
+  ossec_server.enable_email_alerts:
+    description: "Email on alerts"
+    default: y
+  ossec_server.email_alerts.email_address:
+    description: "Email addresses to send alerts to"
+    default: ["noreply@example.com"]
+  ossec_server.email_alerts.smtp_server:
+    description: "SMTP server"
+    default: your.mail.relay.server
+  ossec_server.enable_remote_syslog:
+    description: "Enable remote syslog"
+    default: y
+  ossec_server.enable_firewall_response:
+    description: "Enable firewall response"
+    default: n
+  ossec_server.whitelist:
+    description: "List of ips or networks which are never going to be blocked"
+    default: ["127.0.0.1"]
+  
