@@ -9,6 +9,5 @@ export USER_DIR=${BOSH_INSTALL_TARGET}/${OSSEC_VERSION}
 tar -zxvf ${OSSEC_VERSION}.tar.gz -C ${BOSH_INSTALL_TARGET}
 cd ${USER_DIR}/src
 export CEXTRA="-DDEFAULTDIR=\\\"${USER_DIR}\\\""
-make setagent
 make all
 make build
