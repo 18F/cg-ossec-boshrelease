@@ -39,4 +39,4 @@ properties:
   ossec_server.whitelist:
     description: "List of ips or networks which are never going to be blocked"
     default: ["127.0.0.1"]
-  
+
