@@ -19,6 +19,15 @@ if [ ! -f $PACKAGE_DIR/ossec-hids-2.8.3/bin/ossec-control ]; then
     ./install.sh
 fi
 
+if [ ! -f $PACKAGE_DIR/ossec-hids-2.8.3/etc/client.keys ]; then
+echo "A
+agent1
+192.168.1.1
+
+y
+Q" | $PACKAGE_DIR/ossec-hids-2.8.3/bin/manage_agents
+fi
+
 case $2 in
 
   start)

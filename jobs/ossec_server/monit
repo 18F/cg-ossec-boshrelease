@@ -5,29 +5,23 @@ check process ossec-maild with pidfile /var/vcap/sys/run/ossec_server/ossec-mail
 check process ossec-execd with pidfile /var/vcap/sys/run/ossec_server/ossec-execd.pid
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-execd start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-execd stop"
-   #depends on ossec-maild
 
 check process ossec-analysisd with pidfile /var/vcap/sys/run/ossec_server/ossec-analysisd.pid
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-analysisd start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-analysisd stop"
-   #depends on ossec-execd
 
 check process ossec-logcollector with pidfile /var/vcap/sys/run/ossec_server/ossec-logcollector.pid
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-logcollector start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-logcollector stop"
-   #depends on ossec-analysisd
 
-check process ossec-remoted matching ossec-remoted every 2 cycles
+check process ossec-remoted matching "ossec-remoted" every 2 cycles
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-remoted start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-remoted stop"
-   #depends on ossec-logcollector
 
 check process ossec-syscheckd with pidfile /var/vcap/sys/run/ossec_server/ossec-syscheckd.pid
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-syscheckd start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-syscheckd stop"
-   #depends on ossec-remoted
 
 check process ossec-monitord with pidfile /var/vcap/sys/run/ossec_server/ossec-monitord.pid
    start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-monitord start"
    stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-monitord stop"
-   #depends on ossec-syscheckd
