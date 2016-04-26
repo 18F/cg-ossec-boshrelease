@@ -29,7 +29,7 @@ jobs:
 
 properties:
   env: (( merge || meta.default_env ))
-  ossec: ~
+  ossec_server: ~
 
 compilation:
   workers: 6

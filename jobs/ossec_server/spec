@@ -24,12 +24,13 @@ properties:
   ossec_server.enable_email_alerts:
     description: "Email on alerts"
     default: y
-  ossec_server.email_alerts.email_address:
-    description: "Email addresses to send alerts to"
-    default: ["noreply@example.com"]
+  ossec_server.email_alerts.to_email_address:
+    description: "Email address to send email alerts"
+  ossec_server.email_alerts.from_email_address:
+    description: "FROM: email address for alerts"
+    default: "ossec@example.com"
   ossec_server.email_alerts.smtp_server:
     description: "SMTP server"
-    default: your.mail.relay.server
   ossec_server.enable_remote_syslog:
     description: "Enable remote syslog"
     default: y
@@ -39,4 +40,10 @@ properties:
   ossec_server.whitelist:
     description: "List of ips or networks which are never going to be blocked"
     default: ["127.0.0.1"]
+  ossec_server.allowed_ips:
+    description: "List of ips or networks that contain agents"
+    default: ["127.0.0.1"]
+  ossec_server.enabled_rules:
+    description: "List of rule files that will be included in the server checks"
+    default: [ "rules_config.xml", "pam_rules.xml", "sshd_rules.xml", "syslog_rules.xml", "ossec_rules.xml", "attack_rules.xml", "local_rules.xml" ]
 
