@@ -46,4 +46,11 @@ properties:
   ossec_server.enabled_rules:
     description: "List of rule files that will be included in the server checks"
     default: [ "rules_config.xml", "pam_rules.xml", "sshd_rules.xml", "syslog_rules.xml", "ossec_rules.xml", "attack_rules.xml", "local_rules.xml" ]
+  ossec_server.local_files:
+    description: "List of local log files to scan, with format and location"
+    example:
+      local_files:
+        - log_format: syslog
+          location: /var/log/syslog
+    default: [ { log_format: syslog, location: /var/log/syslog } ]
 
