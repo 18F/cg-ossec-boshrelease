@@ -1,0 +1,31 @@
+<!-- OSSEC example config -->
+
+<ossec_config>
+
+  <syscheck>
+    <frequency>72000</frequency>
+
+    <directories check_all="yes">/etc,/usr/bin,/usr/sbin</directories>
+    <directories check_all="yes">/bin,/sbin</directories>
+
+    <ignore>/etc/mtab</ignore>
+    <ignore>/etc/hosts.deny</ignore>
+  </syscheck>
+
+  <rootcheck>
+    <rootkit_files>/var/vcap/packages/ossec/ossec-hids-2.8.3/etc/shared/rootkit_files.txt</rootkit_files>
+    <rootkit_trojans>/var/vcap/packages/ossec/ossec-hids-2.8.3/etc/shared/rootkit_trojans.txt</rootkit_trojans>
+  </rootcheck>
+
+  <client>
+    <server-hostname><%= p("ossec_client.server_name") %></server-hostname>
+  </client>
+
+  <% p("ossec_client.local_files").each do |file| %>
+  <localfile>
+    <log_format><%= file["log_format"] %></log_format>
+    <location><%= file["location"] %></location>
+  </localfile>
+  <% end %>
+
+</ossec_config>

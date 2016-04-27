@@ -1,0 +1,36 @@
+---
+name: ossec_client
+templates:
+  preloaded-vars.conf.erb: etc/preloaded-vars.conf
+  ossec-server.conf.erb: etc/ossec-server.conf
+  ossec_client_ctl.erb: bin/ossec_client_ctl
+
+packages:
+- ossec
+
+properties:
+  ossec_client.server_name:
+    description: "Fully qualified DNS name of the server"
+  ossec_client.language:
+    description: "Server language"
+    default: en
+  ossec_client.enable_active_response:
+    description: "Enable active responses"
+    default: n
+  ossec_client.enable_syscheck:
+    description: "Enable syscheck"
+    default: y
+  ossec_client.enable_rootcheck:
+    description: "Enable root checking"
+    default: y
+  ossec_client.profile_name:
+    description: "Configuration profile name for the agent"
+    default: "generic"
+  ossec_client.local_files:
+    description: "List of local log files to scan, with format and location"
+    example:
+      local_files:
+        - log_format: syslog
+          location: /var/log/syslog
+    default: [ { log_format: syslog, location: /var/log/syslog } ]
+
