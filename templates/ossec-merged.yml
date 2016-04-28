@@ -17,6 +17,17 @@ jobs:
   templates:
   - name: ossec_server
     release: ossec
+- instances: 1
+  name: ossec_client
+  networks:
+  - name: cf1
+    static_ips:
+    - 10.244.0.6
+  persistent_disk: 3000
+  resource_pool: small_z1
+  templates:
+  - name: ossec_client
+    release: ossec
 meta:
   default_env:
     bosh:
@@ -3378,6 +3389,8 @@ properties:
   env:
     bosh:
       password: $6$4gDD3aV0rdqlrKC$2axHCxGKIObs6tAmMTqYCspcdvQXh3JJcvWOY2WGb4SrdXtnCyNaWlrf3WEqvYR2MYizEGp3kMmbpwBC6jsHt0
+  ossec_client:
+    server_ip: 10.244.0.2
   ossec_server:
     email_alerts:
       smtp_server: smtp.gsa.gov

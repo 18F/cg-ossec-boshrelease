@@ -67,9 +67,11 @@ USER_BINARYINSTALL="x"
 # Specifies the IP address or hostname of the
 # ossec server. Only used on agent installations.
 # Choose only one, not both.
-# USER_AGENT_SERVER_IP="1.2.3.4"
+<% if p("ossec_client.server_ip") %>
+USER_AGENT_SERVER_IP="<%= p("ossec_client.server_ip") %>"
+<% else %>
 USER_AGENT_SERVER_NAME="<%= p("ossec_client.server_name") %>"
-
+<% end %>
 
 # USER_AGENT_CONFIG_PROFILE specifies the agent's config profile
 # name. This is used to create agent.conf configuration profiles

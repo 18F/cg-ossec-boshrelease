@@ -1,16 +1,16 @@
-check process ossec-execd with pidfile /var/vcap/sys/run/ossec_server/ossec-execd.pid
-   start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-execd start"
-   stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-execd stop"
+check process ossec-execd with pidfile /var/vcap/sys/run/ossec_client/ossec-execd.pid
+   start program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-execd start"
+   stop program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-execd stop"
 
-check process ossec-agentd with pidfile /var/vcap/sys/run/ossec_server/ossec-agentd.pid
-   start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-agentd start"
-   stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-agentd stop"
+check process ossec-agentd with pidfile /var/vcap/sys/run/ossec_client/ossec-agentd.pid
+   start program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-agentd start"
+   stop program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-agentd stop"
 
-check process ossec-logcollector with pidfile /var/vcap/sys/run/ossec_server/ossec-logcollector.pid
-   start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-logcollector start"
-   stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-logcollector stop"
+check process ossec-logcollector with pidfile /var/vcap/sys/run/ossec_client/ossec-logcollector.pid
+   start program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-logcollector start"
+   stop program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-logcollector stop"
 
-check process ossec-syscheckd with pidfile /var/vcap/sys/run/ossec_server/ossec-syscheckd.pid
-   start program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-syscheckd start"
-   stop program = "/var/vcap/jobs/ossec_server/bin/ossec_server_ctl ossec-syscheckd stop"
+check process ossec-syscheckd with pidfile /var/vcap/sys/run/ossec_client/ossec-syscheckd.pid
+   start program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-syscheckd start"
+   stop program = "/var/vcap/jobs/ossec_client/bin/ossec_client_ctl ossec-syscheckd stop"
 

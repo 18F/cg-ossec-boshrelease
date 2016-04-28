@@ -18,7 +18,11 @@
   </rootcheck>
 
   <client>
+  <% if p("ossec_client.server_ip") %>
+    <server-ip><%= p("ossec_client.server_ip") %></server-ip>
+  <% else %>
     <server-hostname><%= p("ossec_client.server_name") %></server-hostname>
+  <% end %>
   </client>
 
   <% p("ossec_client.local_files").each do |file| %>
